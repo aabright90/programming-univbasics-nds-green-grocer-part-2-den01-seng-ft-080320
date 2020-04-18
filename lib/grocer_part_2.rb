@@ -53,8 +53,8 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
-consolidate_cart(cart).each do |item|
-  total += item[:price]
-  binding.pry
+  consolidate_cart(cart).each do |item|
+    total += item[:price]
+    binding.pry
   end
 end
