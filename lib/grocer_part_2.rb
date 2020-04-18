@@ -37,6 +37,8 @@ def apply_clearance(cart)
     if item[:clearance] == true
       item[:price] -= (item[:price] * 0.20)
       new_cart << item
+    else
+      new_cart << item
     end
   end
   new_cart
@@ -58,8 +60,11 @@ def checkout(cart, coupons)
   clearanced_cart = apply_clearance(couponed_cart)
   total = 0
   clearanced_cart.each do |item|
-    total += item[:price]
+    total += item[:price] * item[:count]
+    if total > 100
+      total -= total * 0.10
+    end
   end
-  binding.pry
+  # binding.pry
   total
 end
