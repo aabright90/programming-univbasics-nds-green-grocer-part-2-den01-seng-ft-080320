@@ -53,5 +53,13 @@ def checkout(cart, coupons)
   #
   # BEFORE it begins the work of calculating the total (or else you might have
   # some irritated customers
-  new_consolidates_cart = consolidate_cart(cart)
+  new_cart = consolidate_cart(cart)
+  couponed_cart = apply_coupons(new_cart, coupons)
+  clearanced_cart = apply_clearance(couponed_cart)
+  total = 0
+  clearanced_cart.each do |item|
+    total += item[:price]
+  end
+  binding.pry
+  total
 end
